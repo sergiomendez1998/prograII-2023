@@ -1,8 +1,8 @@
 
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
-<%@ page import="com.example.crudmvcjavaprograii.ModeloDAO.PersonaDAO" %>
-<%@ page import="com.example.crudmvcjavaprograii.Modelo.Persona" %>
+<%@ page import="com.example.crudmvcjavaprograii.ModeloDAO.EstudianteDAO" %>
+<%@ page import="com.example.crudmvcjavaprograii.Modelo.Estudiante" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -26,17 +26,17 @@
                 <thead>
                     <tr>
                         <th class="text-center">ID</th>
-                        <th class="text-center">DPI</th>
-                        <th class="text-center">NOMBRES</th>
-                        <th class="text-center">Genero</th>
+                        <th class="text-center">CARNET</th>
+                        <th class="text-center">NOMBRE</th>
+                        <th class="text-center">SEDE</th>
                         <th class="text-center">ACCIONES</th>
                     </tr>
                 </thead>
                 <%
-                    PersonaDAO dao=new PersonaDAO();
-                    List<Persona>list=dao.listar();
-                    Iterator<Persona>iter=list.iterator();
-                    Persona per=null;
+                    EstudianteDAO dao=new EstudianteDAO();
+                    List<Estudiante>list=dao.listar();
+                    Iterator<Estudiante>iter=list.iterator();
+                    Estudiante per=null;
                     while(iter.hasNext()){
                         per=iter.next();
                     
@@ -44,9 +44,9 @@
                 <tbody>
                     <tr>
                         <td class="text-center"><%= per.getId()%></td>
-                        <td class="text-center"><%= per.getDpi()%></td>
-                        <td><%= per.getNom()%></td>
-                        <td class="text-center"><%= per.getGenero().getNombre() %></td>
+                        <td class="text-center"><%= per.getCarnet()%></td>
+                        <td><%= per.getNombre()%></td>
+                        <td class="text-center"><%= per.getSede().getNombre() %></td>
                         <td class="text-center">
                             <a href="Controlador?accion=editar&id=<%= per.getId()%>">
     <span style="background-color: orange; padding: 5px; border-radius: 5px; margin-right: 10px;">

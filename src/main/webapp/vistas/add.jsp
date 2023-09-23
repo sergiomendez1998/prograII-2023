@@ -5,10 +5,10 @@
 --%>
 
 <%@page import="java.util.HashSet"%>
-<%@ page import="com.example.crudmvcjavaprograii.Modelo.Genero" %>
 <%@ page import="java.util.Set" %>
 <%@ page import="java.util.Iterator" %>
-<%@ page import="com.example.crudmvcjavaprograii.ModeloDAO.GeneroDAO" %>
+<%@ page import="com.example.crudmvcjavaprograii.Modelo.Sede" %>
+<%@ page import="com.example.crudmvcjavaprograii.ModeloDAO.SedeDAO" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -24,26 +24,37 @@
                 <form action="Controlador" class="was-validated">
 
                     <div class="form-outline mb-4">
-                        <label class="form-label" for="dni">DNI</label>
-                        <input type="text" id="dni" class="form-control" name="txtDpi" maxlength="10" required />
+                        <label class="form-label" for="carnet">Carnet</label>
+                        <input type="text" id="carnet" class="form-control" name="txtCarnet" required />
                     </div><br>
 
                     <div class="form-outline mb-4">
-                        <label class="form-label" for="name">Nombres</label>
-                        <input type="text" id="name" class="form-control" name="txtNom" required />
+                        <label class="form-label" for="name">Nombre</label>
+                        <input type="text" id="name" class="form-control" name="txtNombre" required />
+                    </div><br>
+
+
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="lastname">Apellido</label>
+                        <input type="text" id="lastname" class="form-control" name="txtApellido" required />
                     </div><br>
 
                     <div class="form-outline mb-4">
-                    <label class="form-label" for="gender">Genero</label>
-                    <select class="form-control mb-3" name="txtGen" id="gender" >
+                        <label class="form-label" for="edad">Edad</label>
+                        <input type="text" id="edad" class="form-control" name="txtEdad" required />
+                    </div><br>
+
+                    <div class="form-outline mb-4">
+                    <label class="form-label" for="gender">Sede</label>
+                    <select class="form-control mb-3" name="txtSede" id="gender" >
                         <%
-                            Set<Genero> list = new HashSet<>(GeneroDAO.LISTA_GENEROS);
-                            Iterator<Genero> iter = list.iterator();
-                            Genero genero = null;
+                            Set<Sede> list = new HashSet<>(SedeDAO.LISTA_SEDES);
+                            Iterator<Sede> iter = list.iterator();
+                            Sede sede = null;
                             while (iter.hasNext()) {
-                                genero = iter.next();
+                                sede = iter.next();
                         %>
-                        <option value="<%= genero.getId()%>" ><%= genero.getNombre()%></option>
+                        <option value="<%= sede.getId()%>" ><%= sede.getNombre()%></option>
                         <%}%>
                     </select>
                     </div><br>
