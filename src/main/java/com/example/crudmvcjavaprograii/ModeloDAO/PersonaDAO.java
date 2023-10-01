@@ -20,7 +20,7 @@ public class PersonaDAO implements CRUD<Persona> {
     Connection con;
     PreparedStatement ps;
     ResultSet rs;
-    Persona persona=new Persona();
+    Persona persona = new Persona();
     Genero genero = new Genero();
     
     @Override
@@ -36,7 +36,15 @@ public class PersonaDAO implements CRUD<Persona> {
                 Persona per=new Persona();
                 Genero genero = new Genero();
 
-                getAttributesFromResultSet(per, genero);
+                per.setId(rs.getInt("p.Id"));
+                per.setDpi(rs.getString("p.DPI"));
+                per.setNom(rs.getString("p.Nombres"));
+                per.setActivo(rs.getBoolean("p.activo"));
+
+                genero.setId(rs.getInt("g.id"));
+                genero.setNombre(rs.getString("g.nombre"));
+                genero.setDescripcion(rs.getString("g.descripcion"));
+                per.setGenero(genero);
 
                 list.add(per);
             }

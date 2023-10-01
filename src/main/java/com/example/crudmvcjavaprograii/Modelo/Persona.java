@@ -12,7 +12,9 @@ public class Persona {
     private int id;
     private String dpi;
     private String nom;
+
     private boolean activo;
+
     private Genero genero;
 
     public Persona(String dpi, String nom) {
