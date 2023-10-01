@@ -40,6 +40,9 @@ public class EstudianteDAO implements CRUD<Estudiante> {
                 sede.setId(rs.getInt("s.id"));
                 sede.setNombre(rs.getString("s.nombre"));
                 sede.setDescripcion(rs.getString("s.descripcion"));
+
+                estudiante.setSede(sede);
+                list.add(estudiante);
             }
         } catch (SQLException e) {
         }
